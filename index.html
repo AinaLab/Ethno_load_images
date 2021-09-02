@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+	<script src="https://miro.com/app/static/sdk.1.1.js">
+
+
+miro.onReady(() => {
+  miro.initialize({
+    extensionPoints: {
+      bottomBar: {
+        title: 'Load images',
+        svgIcon:
+          '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
+        positionPriority: 1,
+        onClick: async () => {
+
+let fr = await miro.board.widgets.get({title:"Photos à charger"})
+let fra = fr[0]
+let stickers_id = fra.childrenIds
+
+for (let n=0; n<stickers_id.length;n++){
+	let sticker = await miro.board.widgets.get({id:stickers_id[n]});
+	sticker = sticker[0];
+	sticker = sticker.plainText;
+	let start_url = sticker.search(" url:");
+	await miro.board.widgets.create({type:'image',url:sticker.substring(start_url+5), title:sticker.substring(6,start_url-6)})
+}
+
+}}}})})
+
+	</script>
+
+  </head>
+</html>
