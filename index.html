@@ -41,7 +41,7 @@ miro.onReady(() => {
 				positionPriority: 1,
 				onClick: async () => {
 					let widgets = await miro.board.widgets.get();
-					stickers = widgets.filter((widget) => widget.y <= -3000);
+					stickers = widgets.filter((widget) => widget.y <= -4500);
 					for (let n=0; n<stickers.length;n++){
 						let sticker = await miro.board.widgets.get({id:stickers[n].id});
 						sticker = sticker[0];
