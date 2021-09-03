@@ -32,14 +32,15 @@ miro.onReady(() => {
 	  
 	<script>
 		miro.onReady(() => {
-			  miro.initialize({
-			    extensionPoints: {
-			      bottomBar: {
-				title: 'Load images',
-				svgIcon:
-				  '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
-				positionPriority: 1,
-				onClick: async () => {
+			  //miro.initialize({
+			    //extensionPoints: {
+			      //bottomBar: {
+				//title: 'Load images',
+				//svgIcon:
+				  //'<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
+				//positionPriority: 1,
+				//onClick: 
+					async () => {
 					let widgets = await miro.board.widgets.get();
 					stickers = widgets.filter((widget) => widget.y <= -4500);
 					for (let n=0; n<stickers.length;n++){
@@ -52,9 +53,9 @@ miro.onReady(() => {
 					}
 						
 				},
-			      },
-			    },
-			  })
+			      //},
+			    //},
+			  //})
 			})
 	  </script>
 
