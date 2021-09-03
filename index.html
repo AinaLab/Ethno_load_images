@@ -40,12 +40,10 @@ miro.onReady(() => {
 				  '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
 				positionPriority: 1,
 				onClick: async () => {
-					let widgets = await miro.board.widgets.get()
-					stickers = widgets.filter((widget) => widget.y <= -3000)
-					stickers = stickers[0]
-					let stickers_id = stickers.childrenIds
-					for (let n=0; n<stickers_id.length;n++){
-						let sticker = await miro.board.widgets.get({id:stickers_id[n]});
+					let widgets = await miro.board.widgets.get();
+					stickers = widgets.filter((widget) => widget.y <= -3000);
+					for (let n=0; n<stickers.length;n++){
+						let sticker = await miro.board.widgets.get({id:stickers[n].id});
 						sticker = sticker[0];
 						sticker = sticker.plainText;
 						let start_url = sticker.search(" url:");
