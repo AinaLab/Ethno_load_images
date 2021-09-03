@@ -40,29 +40,15 @@ miro.onReady(() => {
 				  '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
 				positionPriority: 1,
 				onClick: async () => {
-				  // Get selected widgets
-				  let selectedWidgets = await miro.board.selection.get()
-
-				  // Filter stickers from selected widgets
-				  let stickers = selectedWidgets.filter((widget) => widget.type === 'STICKER')
-
-				  // Delete selected stickers
-				  await miro.board.widgets.deleteById(stickers.map((sticker) => sticker.id))
-
-				  // Create shapes from selected stickers
-				  await miro.board.widgets.create(
-				    stickers.map((sticker) => ({
-				      type: 'shape',
-				      text: sticker.text,
-				      x: sticker.x,
-				      y: sticker.y,
-				      width: sticker.bounds.width,
-				      height: sticker.bounds.height,
-				    })),
-				  )
-
-				  // Show success message
-				  miro.showNotification('Stickers has been converted')
+					
+					for (let n=0; n<stickers_id.length;n++){
+						let sticker = await miro.board.widgets.get({id:stickers_id[n]});
+						sticker = sticker[0];
+						sticker = sticker.plainText;
+						let start_url = sticker.search(" url:");
+						await miro.board.widgets.create({type:'image',url:sticker.substring(start_url+5), title:sticker.substring(6,start_url-6)})
+					}
+						
 				},
 			      },
 			    },
