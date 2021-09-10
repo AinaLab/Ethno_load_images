@@ -20,39 +20,7 @@
 	  </script>
 	  
 	  
-	  <!--
-	<script>
-		miro.onReady(() => {
-			  //miro.initialize({
-			    //extensionPoints: {
-			      //bottomBar: {
-				//title: 'Load images',
-				//svgIcon:
-				  //'<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
-				//positionPriority: 1,
-				//onClick: 
-					async () => {
-					let widgets = await miro.board.widgets.get();
-					stickers = widgets.filter((widget) => widget.y <= -4500);
-					for (let n=0; n<stickers.length;n++){
-						let sticker = await miro.board.widgets.get({id:stickers[n].id});
-						sticker = sticker[0];
-						sticker = sticker.plainText;
-						let start_url = sticker.search(" url:");
-						await miro.board.widgets.create({type:'image',url:sticker.substring(start_url+5), title:sticker.substring(6,start_url-6), scale:0.15,y:-2500})
-						await miro.board.widgets.deleteById(stickers[n].id);
-					}
-						
-				},
-			      //},
-			    //},
-			  //})
-			})
-	  </script>-->
 
   </head>
-	<!--
-	<body>
-	<h1> Hello world </h1>
-	</body>-->
+
 </html>
