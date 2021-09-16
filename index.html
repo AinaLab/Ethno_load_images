@@ -13,7 +13,7 @@
 						sticker = sticker[0];
 						sticker = sticker.plainText;
 						let start_url = sticker.search(" url:");
-						await miro.board.widgets.create({type:'image',url:sticker.substring(start_url+5), title:sticker.substring(6,start_url), scale:0.15,y:-2500})
+						await miro.board.widgets.create({type:'image',url:sticker.substring(start_url+5), title:sticker.substring(6,start_url), scale:0.15,y:-1500})
 						await miro.board.widgets.deleteById(stickers[n].id);
 					}
 		})
