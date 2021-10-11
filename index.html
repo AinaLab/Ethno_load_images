@@ -21,7 +21,7 @@
 						url = text.substring(start_url+5,start_x);
 						console.log(url)
 						console.log(text.substring(start_x+4))
-						await miro.board.widgets.create({type:'image',url:url, title:text.substring(6,start_url), scale:0.15,y:-3000, x:text.substring(start_x+4)})
+						await miro.board.widgets.create({type:'image',url:url, title:text.substring(6,start_url), scale:0.05,y:-3000, x:text.substring(start_x+4)})
 						await miro.board.widgets.deleteById(sticker.id);
 					}
 		})
