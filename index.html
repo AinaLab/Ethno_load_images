@@ -18,10 +18,11 @@
 						text = sticker.plainText;
 						start_url = text.search(" url:");
 						start_x = text.search(" _x:");
+						start_y = text.search(" _y:");
 						url = text.substring(start_url+5,start_x);
-						console.log(url)
-						console.log(text.substring(start_x+4))
-						await miro.board.widgets.create({type:'image',url:url, title:text.substring(6,start_url), scale:0.05,y:-3000, x:text.substring(start_x+4)})
+						x = text.substring(start_x+4, start_y)
+						y = text.substring(start_y+4)
+						await miro.board.widgets.create({type:'image',url:url, title:text.substring(6,start_url), scale:0.05,y:y, x:x})
 						await miro.board.widgets.deleteById(sticker.id);
 					}
 		})
