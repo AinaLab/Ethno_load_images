@@ -11,7 +11,7 @@
 						await miro.requestAuthorization()// Ask the user to authorize the app.
 					}
 					let widgets = await miro.board.widgets.get();
-					stickers = widgets.filter((widget) => widget.y <= -4500);
+					stickers = widgets.filter((widget) => widget.y <= -14000);
 					for (let n=0; n<stickers.length;n++){
 						let sticker = await miro.board.widgets.get({id:stickers[n].id});
 						sticker = sticker[0];
