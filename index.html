@@ -24,7 +24,13 @@
 						y = text.substring(start_y+4);
 						title = text.substring(6,start_url);
 						try{
-							await miro.board.widgets.create({type:'image',url:url, title:title, scale:0.05,y:y, x:x});
+							image = await miro.board.widgets.create({type:'image',url:url, title:title, scale:0.05,y:y, x:x});
+							if (image[0].bounds.width > image[0].bounds.height){
+								await miro.board.widgets.update({"id" : im[0].id,"title" : "HOR " + image[0].title})
+							}
+							else{
+								await miro.board.widgets.update({"id" : im[0].id,"title" : "VER " + image[0].title})
+							}
 							await miro.board.widgets.deleteById(sticker.id);
 						}
 						catch(e){
