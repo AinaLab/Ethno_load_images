@@ -31,7 +31,9 @@
 							else{
 								await miro.board.widgets.update({"id":image[0].id,"title" : "VER " + image[0].title});
 							}
+							console.log("avant");
 							await miro.board.widgets.deleteById(sticker.id);
+							console.log("après");
 						}
 						catch(e){
 							console.error(e);
