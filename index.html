@@ -20,11 +20,17 @@
 						start_x = text.search(" _x:");
 						start_y = text.search(" _y:");
 						url = text.substring(start_url+5,start_x);
-						x = text.substring(start_x+4, start_y);
-						y = text.substring(start_y+4);
+						x0 = parseInt(text.substring(start_x+4, start_y));
+						y0 = parseInt(text.substring(start_y+4));
 						title = text.substring(6,start_url);
 						try{
-							await miro.board.widgets.create({type:'image',url:url, title:title, scale:0.05,y:y, x:x});
+							image = await miro.board.widgets.create({type:'image',url:url, title:title, scale:0.05,y:y0, x:x0});
+							if (image[0].bounds.width > image[0].bounds.height){
+								await miro.board.widgets.update({"id":image[0].id,"title" : "HOR " + image[0].title});
+							}
+							else{
+								await miro.board.widgets.update({"id":image[0].id,"title" : "VER " + image[0].title});
+							}
 							await miro.board.widgets.deleteById(sticker.id);
 						}
 						catch(e){
