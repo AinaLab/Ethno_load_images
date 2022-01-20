@@ -6,7 +6,7 @@
 	  
 	  <script> 
 		  
-		async function upadte_name(image){
+		async function update_name(image){
 			if (image.bounds.width > image[0].bounds.height){
 				await miro.board.widgets.update({"id":image[0].id,"title" : "HOR " + image.title});
 			}
