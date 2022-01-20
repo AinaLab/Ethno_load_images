@@ -6,7 +6,8 @@
 	  
 	  <script> 
 		  miro.onReady(async() => {
-			  		const isAuthorized = await miro.isAuthorized()
+			  		console.log("start");
+			  		const isAuthorized = await miro.isAuthorized();
 					if (!isAuthorized) {
 						await miro.requestAuthorization()// Ask the user to authorize the app.
 					}
