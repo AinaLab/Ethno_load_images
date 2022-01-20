@@ -5,6 +5,14 @@
 	  
 	  
 	  <script> 
+		  async function upadte_name(image){
+			  if (image.bounds.width > image[0].bounds.height){
+				  await miro.board.widgets.update({"id":image[0].id,"title" : "HOR " + image.title});
+			  }
+			  else{
+				  await miro.board.widgets.update({"id":image[0].id,"title" : "VER " + image.title});
+			  }
+		  
 		  miro.onReady(async() => {
 			  		const isAuthorized = await miro.isAuthorized()
 					if (!isAuthorized) {
@@ -25,15 +33,8 @@
 						title = text.substring(6,start_url);
 						try{
 							image = await miro.board.widgets.create({type:'image',url:url, title:title, scale:0.05,y:y0, x:x0});
-							if (image[0].bounds.width > image[0].bounds.height){
-								await miro.board.widgets.update({"id":image[0].id,"title" : "HOR " + image[0].title});
-							}
-							else{
-								await miro.board.widgets.update({"id":image[0].id,"title" : "VER " + image[0].title});
-							}
-							console.log("avant");
+							update_name(image[0])
 							await miro.board.widgets.deleteById(sticker.id);
-							console.log("après");
 						}
 						catch(e){
 							console.error(e);
