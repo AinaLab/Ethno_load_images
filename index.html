@@ -26,7 +26,7 @@
 						title = text.substring(6,start_url);
 						try{	
 							console.log(url);
-							image = await miro.board.widgets.create({type:'image',url:url, title:title, scale:0.05,y:y, x:x});
+							//await miro.board.widgets.create({type:'image',url:url, title:title, scale:0.05,y:y, x:x});
 
 							await miro.board.widgets.deleteById(sticker.id);
 						}
