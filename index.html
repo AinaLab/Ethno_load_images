@@ -8,10 +8,10 @@
 		  
 		async function update_name(image){
 			if (image.bounds.width > image.bounds.height){
-				await miro.board.widgets.update({"id":image.id,"title" : "HOR " + image.title});
+				await miro.board.widgets.update({"id":image.id,"title" : "HOR " + image.title, "width":image.bounds.width});
 			}
 			else{
-				await miro.board.widgets.update({"id":image.id,"title" : "VER " + image.title});
+				await miro.board.widgets.update({"id":image.id,"title" : "VER " + image.title, "width":image.bounds.width});
 			}
 		}
 		
